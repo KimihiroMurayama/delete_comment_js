@@ -1,25 +1,25 @@
+# コメント追加方法
+# 'ここに好きな文字をいれる',
 NG_WORD_LIST = [
-  'cat',
-  'dog',
+  '取关',
+  'BV',
+  '拉黑',
+  '控评',
+  '呸'
 ]
-
-# コメント管理画面であることをチェックする
-#TODO ページのステータスコードを確認 404意外であることを確認
+var delete = false
 if (location.pathname === '/platform/comment/article') {
-  # ページの数だけ
-  ## NGワードの数だけ以下を繰り返す
-  console.log('delete page');
-  ###sectionを取得
   var section = document.getElementsByClassName('section-list_wrap')[0]
-  ### コメント一覧を含んだDOMを取得
   var comment_list = section.getElementsByClassName('ci-content')
-  ### コメントに正規表現を走らせて削除対象のコメントを判定する
   comment_list.forEach(function(comment,index){
     if (NG_WORD_LIST.includes(comment.innerText)) {
-      #チェックボックスにチェックを付ける
-      section.getElementsByClassName('check_box')[1].click()  
+      section.getElementsByClassName('check-box')[index].click()
+      delete = true
     }
   });
-  ### 判定されたコメントのチェックボックスにチェックを付ける
-  ### 削除ボタンを押す
+  ### 削除
+  if (delete) {
+    document.getElementsByClassName('bcc-button del bcc-button--default large')[0].click()
+    document.getElementsByClassName('bcc-button bcc-button--primary large')[0].click()
+  }
 }

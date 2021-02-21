@@ -1,25 +1,41 @@
-# コメント追加方法
-# 'ここに好きな文字をいれる',
+// NG_WORD_LIST = [
+//   '取关',
+//   'BV',
+//   '拉黑',
+//   '控评',
+//   '呸'
+// ]
 NG_WORD_LIST = [
-  '取关',
-  'BV',
-  '拉黑',
-  '控评',
-  '呸'
+  'test111',
+  'test'
 ]
-var delete = false
-if (location.pathname === '/platform/comment/article') {
-  var section = document.getElementsByClassName('section-list_wrap')[0]
-  var comment_list = section.getElementsByClassName('ci-content')
-  comment_list.forEach(function(comment,index){
-    if (NG_WORD_LIST.includes(comment.innerText)) {
-      section.getElementsByClassName('check-box')[index].click()
-      delete = true
-    }
-  });
-  ### 削除
-  if (delete) {
-    document.getElementsByClassName('bcc-button del bcc-button--default large')[0].click()
-    document.getElementsByClassName('bcc-button bcc-button--primary large')[0].click()
+
+if (location.pathname === '/platform/comment/article') {  
+  var set_interval_id = setInterval(deleteNgComment, 1000);
+}
+
+function deleteNgComment() {
+  if (section_list().length > 0) {
+    clearInterval(set_interval_id);
+    checkNgWord(commentList(), section_list())
+    setTimeout(clickDeleteButton(delete_flg),2000); 
   }
+}
+
+function checkNgWord(comment_list, section_list) {
+  comment_list.forEach(function(comment,index){
+    section_list.forEach(function(section){
+      if (NG_WORD_LIST.includes(comment.innerText)) {
+        section.getElementsByClassName('check-box')[index].click()
+      }
+    });
+  });
+}
+
+function section_list() {
+ return document.getElementsByClassName('section-list_wrap')
+}
+
+function commentList() {
+ return document.getElementsByClassName('ci-content')
 }

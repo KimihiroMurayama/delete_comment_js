@@ -1,16 +1,11 @@
-// NG_WORD_LIST = [
-//   '取关',
-//   'BV',
-//   '拉黑',
-//   '控评',
-//   '呸'
-// ]
-NG_WORD_LIST = [
-  'test111',
-  'test'
-]
-
-if (location.pathname === '/platform/comment/article') {  
+if (location.pathname === '/platform/comment/article') {
+  NG_WORD_LIST = [
+    '取关',
+    'BV',
+    '拉黑',
+    '控评',
+    '呸'
+    ]
   var set_interval_id = setInterval(deleteNgComment, 1000);
 }
 

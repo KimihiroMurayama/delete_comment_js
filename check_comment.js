@@ -13,7 +13,6 @@ function deleteNgComment() {
   if (section_list().length > 0) {
     clearInterval(set_interval_id);
     checkNgWord(commentList(), section_list())
-    setTimeout(clickDeleteButton(delete_flg),2000); 
   }
 }
 

@@ -8,4 +8,6 @@ if (location.pathname === '/platform/comment/article') {
     function clickDecisionButton() {
         document.getElementsByClassName('bcc-button bcc-button--primary large')[0].click()
     }
+    const timer = 10000    // ミリ秒で間隔の時間を指定
+    setInterval('location.reload()',timer);
 }

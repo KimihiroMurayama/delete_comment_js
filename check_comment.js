@@ -4,7 +4,7 @@ if (location.pathname === '/platform/comment/article') {
     'BV',
     '拉黑',
     '控评',
-    '呸'
+    '呸' //ここより上にコメントを追加してください。
     ]
   var set_interval_id = setInterval(deleteNgComment, 1000);
 }

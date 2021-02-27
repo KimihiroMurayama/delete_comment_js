@@ -39,7 +39,6 @@ if (location.pathname === '/platform/comment/article') {
     'ctrl',
     '删',
     'baidu',
-    '拉黑',
     '恶心',
     '一模一样',
     'Y2b',
@@ -76,15 +75,17 @@ if (location.pathname === '/platform/comment/article') {
 function deleteNgComment() {
   if (checkboxs().length > 0) {
     clearInterval(set_interval_id);
-    checkNgWord_tmp(comments(), checkboxs())
+    checkNgWord(comments(), checkboxs())
   }
 }
 
-function checkNgWord_tmp(comments, checkboxs) {
+function checkNgWord(comments, checkboxs) {
   comments.forEach(function(comment,index){
+    var first = true
     NG_WORD_LIST.forEach(function(ng_word){
-      if(comment.innerText.indexOf(ng_word) > -1) {
+      if(comment.innerText.indexOf(ng_word) > -1 && first) {
         checkboxs[index].click()
+        first = false
       }
     });
   });

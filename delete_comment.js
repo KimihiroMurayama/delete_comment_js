@@ -1,3 +1,5 @@
+// 20 = 20 per second
+RELOAD_INTERVAL = 20
 
 if (location.pathname === '/platform/comment/article') {
     setTimeout(clickDeleteButton,2000);
@@ -8,6 +10,6 @@ if (location.pathname === '/platform/comment/article') {
     function clickDecisionButton() {
         document.getElementsByClassName('bcc-button bcc-button--primary large')[0].click()
     }
-    const timer = 10000    // ミリ秒で間隔の時間を指定
+    const timer = RELOAD_INTERVAL * 1000
     setInterval('location.reload()',timer);
 }
